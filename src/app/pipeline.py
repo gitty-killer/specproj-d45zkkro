@@ -1,6 +1,6 @@
 """Processing pipeline."""
 
-from . import parse, transform, validate
+from . import parse, transform, validate, filters, reducers
 
 
 def process_lines(lines):
@@ -10,7 +10,17 @@ def process_lines(lines):
     return valid
 
 
+def apply_filters(items):
+    return [item for item in items if filters.filters_func_1(item)]
+
+
+def reduce_items(items):
+    return reducers.reducers_batch(items)
+
+
 def run_pipeline(text):
     lines = [line for line in text.splitlines() if line.strip()]
-    return process_lines(lines)
+    items = process_lines(lines)
+    items = apply_filters(items)
+    return reduce_items(items)
 
