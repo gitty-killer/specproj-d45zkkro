@@ -1,0 +1,6 @@
+{
+  ""name"": ""specproj-d45zkkro"",
+  ""goal"": ""config auditor for feature flags"",
+  ""language"": ""node"",
+  ""template"": ""node-api""
+}
